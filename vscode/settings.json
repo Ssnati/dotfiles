@@ -181,6 +181,12 @@
     "[github-actions-workflow]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "workbench.editorAssociations": {
+        "*.csv": "default"
+    },
     "diffEditor.maxComputationTime": 0,
     "markdown-preview-enhanced.enablePreviewZenMode": false,
     "markdown-preview-enhanced.revealjsTheme": "black.css",
