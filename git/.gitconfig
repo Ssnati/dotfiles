@@ -1,0 +1,17 @@
+[user]
+	name = Ssolaris
+	email = 108376306+Ssnati@users.noreply.github.com
+[core]
+	editor = code --wait
+	autocrlf = true
+[credential "https://academia.uptc.edu.co"]
+	provider = generic
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
+[alias]
+	st = status
+	cm = commit -m
+	aa = add .
+	l = log --oneline

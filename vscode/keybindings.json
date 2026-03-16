@@ -1,0 +1,32 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+shift+alt+o",
+        "command": "github.copilot.toggleCopilot"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-github.copilot.generate",
+        "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "extension.executeSQLCommand",
+        "when": "editorTextFocus && editorLangId == 'oraclesql'"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-extension.executeSQLCommand",
+        "when": "editorTextFocus && editorLangId == 'oraclesql'"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "explorer.newFile",
+        "when": "explorerViewletVisible"
+    },
+    {
+        "key": "alt+p",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletVisible"
+    }
+]

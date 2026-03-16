@@ -1,0 +1,188 @@
+{
+    "workbench.colorTheme": "Photon High Contrast",
+    "editor.guides.bracketPairs": true,
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true,
+        "sql": true,
+        "javascript": false
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "java.configuration.runtimes": [
+
+    ],
+    "java.test.config": {
+
+    },
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-17",
+    "prolog.executablePath": "D:\\Program Files\\swipl\\bin\\swipl.exe",
+    "oracledevtools.bookmarkFileFolder": "C:\\Users\\ADMIN\\Oracle\\oracle.oracledevtools",
+    "oracledevtools.download.otherFolder": "C:\\Users\\ADMIN\\downloads",
+    "oracledevtools.connectionConfiguration.configFilesFolder": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+    "[oraclesql]": {
+        "editor.suggest.showSnippets": true,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "oracledevtools.connectionConfiguration.walletFileFolder": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+    "oracledevtools.connections": [
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "CARGA_MASIVA",
+            "passwordSaved": false,
+            "dataSource": "localhost:1521/MYPDB",
+            "connectionType": 2,
+            "databaseHostName": "localhost",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "MYPDB",
+            "tnsAdmin": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+            "name": "CARGA_MASIVA.MYPDB",
+            "color": "0000ff",
+            "currentSchema": "",
+            "addSettingsScopeToConnectionName": false,
+            "addCurrentSchemaToConnectionName": false,
+            "filters": [],
+            "useCompatibleNamesDirectoryPath": true
+        },
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "HR",
+            "passwordSaved": false,
+            "dataSource": "localhost:1521/ORCL",
+            "connectionType": 2,
+            "databaseHostName": "localhost",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "ORCL",
+            "tnsAdmin": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+            "name": "HR.ORCL",
+            "color": "none",
+            "currentSchema": "",
+            "addSettingsScopeToConnectionName": false,
+            "addCurrentSchemaToConnectionName": false,
+            "filters": [],
+            "useCompatibleNamesDirectoryPath": true
+        },
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "SANTIAGO",
+            "passwordSaved": false,
+            "dataSource": "localhost:1521/ORCLPDB",
+            "connectionType": 2,
+            "databaseHostName": "localhost",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "ORCLPDB",
+            "tnsAdmin": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+            "name": "SANTIAGO.ORCLPDB",
+            "color": "none",
+            "currentSchema": "",
+            "addSettingsScopeToConnectionName": false,
+            "addCurrentSchemaToConnectionName": false,
+            "filters": [],
+            "useCompatibleNamesDirectoryPath": true
+        },
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "PARCIALTALLER2",
+            "passwordSaved": false,
+            "dataSource": "localhost:1521/ORCLPDB",
+            "connectionType": 2,
+            "databaseHostName": "localhost",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "ORCLPDB",
+            "tnsAdmin": "C:\\Users\\ADMIN\\Oracle\\network\\admin",
+            "name": "PARCIALTALLER2.ORCLPDB",
+            "color": "none",
+            "currentSchema": "",
+            "addSettingsScopeToConnectionName": false,
+            "addCurrentSchemaToConnectionName": false,
+            "filters": [],
+            "useCompatibleNamesDirectoryPath": true
+        }
+    ],
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "allowed": true
+        }
+    ],
+    "window.zoomLevel": 2,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "Key Promoter.ignoredCommands": [
+        "type",
+        "cursorWordEndRightSelect",
+        "cursorWordLeftSelect"
+    ],
+    "mdb.confirmRunAll": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "breadcrumbs.enabled": false,
+    "terminal.integrated.env.windows": {},
+    "console-ninja.featureSet": "Community",
+    "[java]": {
+        "editor.defaultFormatter": "Oracle.oracle-java"
+    },
+    "workbench.sideBar.location": "right",
+    "rsp-ui.enableStartServerOnActivation": [
+        {
+            "id": "redhat.vscode-community-server-connector",
+            "name": "Community Server Connector",
+            "startOnActivation": true
+        }
+    ],
+    "files.autoSave": "afterDelay",
+    "remote.SSH.remotePlatform": {
+        "10.4.75.45": "linux",
+        "192.168.1.19": "linux",
+        "192.168.1.5": "linux",
+        "192.168.1.28": "linux",
+        "ubuntu-electiva1": "linux",
+        "192.168.1.2": "linux"
+    },
+    "editor.linkedEditing": true,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    "hediet.vscode-drawio.resizeImages": null,
+    "mdb.mcp.server": "autoStartDisabled",
+    "docker.extension.enableComposeLanguageServer": false,
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "diffEditor.maxComputationTime": 0,
+    "markdown-preview-enhanced.enablePreviewZenMode": false,
+    "markdown-preview-enhanced.revealjsTheme": "black.css",
+    "sqldeveloper.datagrid.fontFamily": "Consolas, 'Courier New', monospace"
+}
