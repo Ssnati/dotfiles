@@ -93,6 +93,7 @@ El script de instalación crea symlinks desde estas rutas hacia el repo.
 | Git          | `.gitconfig`                             | `%USERPROFILE%\.gitconfig`                                                    |
 | oh-my-posh   | `kali.omp.json`                          | `%LOCALAPPDATA%\Programs\oh-my-posh\bin\oh-my-posh.exe`                       |
 | oh-my-posh   | ejecutable                               | `%LOCALAPPDATA%\Programs\oh-my-posh\themes\kali.omp.json`                     |
+| windows-terminal   | `settings.json`                          | `%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`                     |
 
 ### Linux
 

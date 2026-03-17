@@ -134,6 +134,9 @@ $installers = [ordered]@{
         # zoxide no tiene archivo de config propio
         $script:skipped += "[zoxide] Sin archivo de config — inicialización va en el perfil de PowerShell"
     }
+    "windows-terminal" = {
+        New-Link "$repo\windows-terminal\settings.json" "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    }
 }
 
 # ==================================================
