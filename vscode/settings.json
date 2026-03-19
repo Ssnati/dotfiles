@@ -190,5 +190,6 @@
     "diffEditor.maxComputationTime": 0,
     "markdown-preview-enhanced.enablePreviewZenMode": false,
     "markdown-preview-enhanced.revealjsTheme": "black.css",
-    "sqldeveloper.datagrid.fontFamily": "Consolas, 'Courier New', monospace"
+    "sqldeveloper.datagrid.fontFamily": "Consolas, 'Courier New', monospace",
+    "explorer.confirmDelete": false
 }
