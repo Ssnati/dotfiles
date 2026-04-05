@@ -13,39 +13,45 @@ Configuraciones personales de herramientas de desarrollo, versionadas con Git.
 │   └── kali.omp.json
 ├── pwsh/
 │   └── Microsoft.PowerShell_profile.ps1
+├── scripts/
+│   ├── install.ps1       # Windows installer
+│   └── install.sh        # Linux installer
 ├── vscode/
 │   ├── keybindings.json
 │   ├── settings.json
 │   └── vscode-santi-default.code-profile
-├── scripts/
-│   └── install.ps1
+├── install.config.example.json
 └── README.md
 ```
 
+> **Nota:** Este repositorio usa una sola rama (`main`) para todas las plataformas. Los scripts de instalación detectan el sistema operativo y aplican solo las configuraciones pertinentes.
+
 ---
 
-## Ramas
+## Plataformas soportadas
 
-| Rama      | Plataforma      | Herramientas                          |
-|-----------|-----------------|---------------------------------------|
-| `windows` | Windows 10/11   | vscode, pwsh, git, oh-my-posh, zoxide |
-| `linux`   | Ubuntu / Debian | vscode, git, oh-my-posh, bat, zoxide  |
+| Plataforma      | Herramientas                                           |
+|-----------------|--------------------------------------------------------|
+| Windows 10/11   | vscode, pwsh, git, oh-my-posh, windows-terminal       |
+| Linux (Ubuntu/Debian) | vscode, git, oh-my-posh, bat, zoxide            |
 
-Cada rama contiene solo las herramientas que aplican a ese entorno.
-Para cambios en archivos compartidos entre ramas (ej. `vscode/settings.json`),
-usar `git cherry-pick <hash>` desde la rama destino.
+El instalador detecta el sistema operativo y aplica las configuraciones correspondientes automáticamente.
 
 ---
 
 ## Instalación
 
+### Clonar el repositorio
+```bash
+git clone https://github.com/ssnati/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+```
+
 ### Windows
 ```powershell
-git clone https://github.com/ssnati/dotfiles.git $HOME\.dotfiles
-cd $HOME\.dotfiles
-git checkout windows
 .\scripts\install.ps1
 ```
+
 El script requiere permisos para crear symlinks. Activa Developer Mode en:
 
 - **Configuración → Sistema → Para desarrolladores → Developer Mode**
@@ -55,15 +61,31 @@ El script requiere permisos para crear symlinks. Activa Developer Mode en:
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /d 1 /v "AllowDevelopmentWithoutDevLicense" /f
 ```
 
+### Linux
+```bash
+chmod +x scripts/install.sh
+./scripts/install.sh
+```
+
 ### Modos del instalador
 
+#### Windows
 | Comando                              | Comportamiento                        |
 |--------------------------------------|---------------------------------------|
-| `.\install.ps1`                      | Menú interactivo                      |
-| `.\install.ps1 -All`                 | Instala todas las herramientas        |
-| `.\install.ps1 -Tools vscode,git`    | Instala herramientas específicas      |
-| `.\install.ps1 -Config`              | Lee `install.config.json`             |
-| `.\install.ps1 -h`                   | Muestra ayuda                         |
+| `.\scripts\install.ps1`              | Menú interactivo                      |
+| `.\scripts\install.ps1 -All`         | Instala todas las herramientas        |
+| `.\scripts\install.ps1 -Tools vscode,git` | Instala herramientas específicas  |
+| `.\scripts\install.ps1 -Config`      | Lee `install.config.json`             |
+| `.\scripts\install.ps1 -h`           | Muestra ayuda                         |
+
+#### Linux
+| Comando                          | Comportamiento                        |
+|----------------------------------|---------------------------------------|
+| `./scripts/install.sh`           | Menú interactivo                      |
+| `./scripts/install.sh -a`        | Instala todas las herramientas        |
+| `./scripts/install.sh -t vscode,git` | Instala herramientas específicas  |
+| `./scripts/install.sh -c`        | Lee `install.config.json`             |
+| `./scripts/install.sh -h`        | Muestra ayuda                         |
 
 ### Instalación selectiva con config
 
@@ -74,7 +96,7 @@ Crea `install.config.json` en la raíz del repo:
 }
 ```
 
-Luego ejecuta `.\install.ps1 -Config`.
+Luego ejecuta el instalador con `-Config` (Windows) o `-c` (Linux).
 
 ---
 

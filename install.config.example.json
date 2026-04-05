@@ -1,0 +1,9 @@
+{
+  "tools": [
+    "git",
+    "oh-my-posh",
+    "pwsh",
+    "vscode",
+    "windows-terminal"
+  ]
+}
