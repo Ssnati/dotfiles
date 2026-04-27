@@ -117,42 +117,65 @@ function New-Link($src, $dst) {
 # ==================================================
 $toInstall = @()
 
-    if ($All) {
-        $toInstall = $availableTools
-    } elseif ($Config) {
-        $configFile = "$repo\install.config.json"
-        if (-not (Test-Path $configFile)) {
-            Write-Host "  [error] No se encontró install.config.json en la raíz del repo" -ForegroundColor Red
-            exit 1
-        }
-        try {
-            $json = Get-Content $configFile -Raw | ConvertFrom-Json
-            $toInstall = $json.install
-        } catch {
-            Write-Host "  [error] No se pudo leer install.config.json: $($_.Exception.Message)" -ForegroundColor Red
-            exit 1
-        }
-    } elseif ($Tools) {
-        $toInstall = $Tools -split ","
-    } else {
-        # Menú interactivo
-        Write-Host ""
-        Write-Host "  == Instalación de dotfiles ==" -ForegroundColor Cyan
-        Write-Host ""
-        foreach ($tool in $availableTools) {
-            $resp = Read-Host "  ¿Instalar '$tool'? [s/n]"
-            if ($resp -eq "s") { $toInstall += $tool }
-        }
+if ($All) {
+    $toInstall = $availableTools
+} elseif ($Config) {
+    $configFile = "$repo\install.config.json"
+    if (-not (Test-Path $configFile)) {
+        Write-Host "  [error] No se encontró install.config.json en la raíz del repo" -ForegroundColor Red
+        exit 1
     }
+    try {
+        $json = Get-Content $configFile -Raw | ConvertFrom-Json
+        $toInstall = $json.tools
+    } catch {
+        Write-Host "  [error] No se pudo leer install.config.json: $($_.Exception.Message)" -ForegroundColor Red
+        exit 1
+    }
+} elseif ($Tools) {
+    $rawTools = $Tools -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
+    if ($rawTools.Count -eq 0) {
+        Write-Host "  [error] -Tools requiere una lista de herramientas" -ForegroundColor Red
+        exit 1
+    }
+    $toInstall = $rawTools
+} else {
+    Write-Host ""
+    Write-Host "  == Instalación de dotfiles ==" -ForegroundColor Cyan
+    Write-Host ""
+    foreach ($tool in $availableTools) {
+        $resp = Read-Host "  ¿Instalar '$tool'? [s/n]"
+        if ($resp -eq "s") { $toInstall += $tool }
+    }
+}
 
 # ==================================================
 # Validar herramientas solicitadas
 # ==================================================
-foreach ($tool in $toInstall) {
-    $tool = $tool.Trim().ToLower()
-    if (-not $installers.Contains($tool)) {
-        $errors += "[input] Herramienta desconocida: '$tool'"
+$validatedTools = @()
+$invalidTools = @()
+
+foreach ($rawTool in $toInstall) {
+    $normalized = $rawTool.Trim().ToLower()
+    if ($normalized -eq "") { continue }
+
+    if ($installers.ContainsKey($normalized)) {
+        $validatedTools += $normalized
+    } else {
+        $invalidTools += $rawTool
     }
+}
+
+if ($invalidTools.Count -gt 0) {
+    Write-Host ""
+    Write-Host "  [error] Herramientas desconocidas: $($invalidTools -join ", ")" -ForegroundColor Red
+    Write-Host "  Usa -Help para ver herramientas disponibles" -ForegroundColor Yellow
+    exit 1
+}
+
+if ($validatedTools.Count -eq 0) {
+    Write-Host "  [warn] No hay herramientas para instalar" -ForegroundColor Yellow
+    exit 0
 }
 
 # ==================================================
@@ -162,12 +185,9 @@ Write-Host ""
 Write-Host "  Instalando..." -ForegroundColor Cyan
 Write-Host ""
 
-foreach ($tool in $toInstall) {
-    $tool = $tool.Trim().ToLower()
-    if ($installers.Contains($tool)) {
-        $script:currentTool = $tool
-        & $installers[$tool]
-    }
+foreach ($tool in $validatedTools) {
+    $script:currentTool = $tool
+    & $installers[$tool]
 }
 
 # ==================================================

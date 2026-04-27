@@ -13,7 +13,7 @@
         "scminput": false,
         "yaml": true,
         "sql": true,
-        "javascript": false
+        "javascript": true
     },
     "[sql]": {
         "editor.defaultFormatter": "mtxr.sqltools"
@@ -192,5 +192,11 @@
     "markdown-preview-enhanced.revealjsTheme": "black.css",
     "sqldeveloper.datagrid.fontFamily": "Consolas, 'Courier New', monospace",
     "explorer.confirmDelete": false,
-    "markdown-mermaid.darkModeTheme": "forest"
+    "markdown-mermaid.darkModeTheme": "forest",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "glassit.alpha": 244,
+    "window.menuBarVisibility": "compact",
+    "workbench.activityBar.location": "hidden"
 }

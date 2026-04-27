@@ -198,9 +198,30 @@ get_tools_to_install() {
             ;;
         tools)
             local requested="${args[tools]:-}"
-            [[ -z "$requested" ]] && die "-t/--tools requiere lista"
-            IFS=',' read -ra tools <<< "$requested"
-            printf '%s\n' "${tools[@]}"
+            [[ -z "$requested" ]] && die "-t/--tools requiere una lista de herramientas"
+
+            local invalid_tools=()
+            IFS=',' read -ra raw_tools <<< "$requested"
+            for t in "${raw_tools[@]}"; do
+                local normalized
+                normalized=$(echo "$t" | tr '[:upper:]' '[:lower:]' | xargs)
+                [[ -z "$normalized" ]] && continue
+
+                local found=false
+                for available in "${all_tools[@]}"; do
+                    if [[ "$normalized" == "$(echo "$available" | tr '[:upper:]' '[:lower:]')" ]]; then
+                        printf '%s\n' "$available"
+                        found=true
+                        break
+                    fi
+                done
+                [[ "$found" == false ]] && invalid_tools+=("$t")
+            done
+
+            if [[ ${#invalid_tools[@]} -gt 0 ]]; then
+                log_error "Herramientas desconocidas: ${invalid_tools[*]}"
+                die "Usa --help para ver disponibles"
+            fi
             ;;
         config)
             read_config
@@ -233,13 +254,12 @@ validate_tools() {
         local normalized
         normalized=$(echo "$tool" | tr '[:upper:]' '[:lower:]' | xargs)
         for available in "${all_tools[@]}"; do
-            if [[ "$normalized" == "$(echo "$available" | tr '[:upper:]' '[:lower:]' | xargs)" ]]; then
+            if [[ "$normalized" == "$(echo "$available" | tr '[:upper:]' '[:lower:]')" ]]; then
                 validated+=("$available")
                 break
             fi
         done
-        [[ $? -ne 0 ]] && add_result error input "Desconocido: $tool"
-    done
+    done < <(printf '%s\n' "$@")
     printf '%s\n' "${validated[@]}"
 }
 
